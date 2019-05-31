@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "reactstrap";
+import { Button, Input } from "reactstrap";
 import "./addPost.css";
 
 class addPost extends Component {
@@ -38,8 +38,14 @@ class addPost extends Component {
   }
 
   onInputChange = e => {
+    console.log(1111, e.target.value)
+    console.log(2222, e.target.name)
     this.setState({ [e.target.name]: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
   };
+
+  onAdd = () => {
+    console.log('button clicked')
+  }
 
   // shouldComponentUpdate(){      //
   // console.log('should update')
@@ -47,50 +53,54 @@ class addPost extends Component {
   // }
 
   render() {
-    // const { onLogin } = this.props;
+    // const { onAdd } = this.props;
 
     // const { email, password } = this.state;
 
     return (
       <div className="Form">
         <div className="Form__content">
-          <h1 className="Form__title">We want to know, what you think!</h1>
+          <h1 className="Form__title">Tell us,<br/> what's on your mind!</h1>
           <form>
             <div className="form-group">
               <label>Author</label>
               <input
-                // onChange={this.onInputChange}
+                onChange={this.onInputChange}
                 // name="email"
-                // className="form-control"
-                // type="email"
+                className="form-control"
+                type="author"
                 // value={email}
               />
+             
             </div>
             <div className="form-group">
               <label>Date</label>
               <input
-                // onChange={this.onInputChange}
+               onChange={this.onInputChange}
                 // name="password"
-                // className="form-control"
-                // type="password"
+                className="form-control"
+                type="date"
+                // value= "2015-08-09"
                 // value={password}
               />
             </div>
             <div className="form-group">
               <label>Your text here:</label>
-              <input
-                // onChange={this.onInputChange}
+              <Input
+                onChange={this.onInputChange}
                 // name="password"
-                // className="form-control"
+                className="form-control"
+                type="textarea"
+                name="text"
                 // type="password"
                 // value={password}
               />
             </div>
             <div className="Form__button">
               <Button
-                // type="button"
-                // onClick={() => onLogin(email, password)}
-                // color="primary"
+                type="button"
+                onClick={() => this.onAdd()}
+                color="primary"
               >
                 Add
               </Button>
