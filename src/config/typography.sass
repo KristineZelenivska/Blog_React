@@ -1,0 +1,34 @@
+
+h1
+  font-family: $primary-font
+  > a
+    font-size: 2rem
+    font-weight: 400
+    &:before
+      display: inline-block
+      text-transform: none
+      padding: 0 5px
+      color: $black
+
+.text-center
+  justify-content: center
+
+@for $i from 1 through 4
+  .text-indent-#{$i}
+    text-indent: 2 * $i + rem
+
+hr
+  display: block
+  width: 100%
+  height: 1px
+
+a
+  cursor: pointer
+
+code
+  line-height: 22px
+  font-family: $monospace-font
+
+
+*:focus
+  outline: none

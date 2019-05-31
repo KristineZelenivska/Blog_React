@@ -1,0 +1,18 @@
+/**
+ * Temporary comment code
+ * comment out when developers learned
+ * how to import sass files
+ */
+
+//
+// Import Configs
+//
+@import './variables';
+
+// Import bootstrap function, variables, mixins
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+// Import icon map
+@import './icons';
