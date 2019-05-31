@@ -1,19 +1,18 @@
 .Form {
-    height:100vh;
-    background-color: rgb(156, 148, 148);
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    
+  height: 100vh;
+  background-color: rgb(156, 148, 148);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Form__content {
-    width:30%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    
-    display: flex;
-    flex-direction: column;
+  width: 30%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
 }
 /* .Login__form{
     display: flex;
@@ -29,14 +28,12 @@
 }
 */
 .Form__button {
-    display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-
 .Form__title {
-    font-weight: bold;
-    padding: 12px;
-    text-align: center;
-
-} 
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
