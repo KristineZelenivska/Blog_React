@@ -28,7 +28,7 @@
     font-size: 30px;
 }
 */
-.Login__button {
+.Form__button {
     display: flex;
  justify-content: center;
 }
@@ -40,8 +40,3 @@
     text-align: center;
 
 } 
-
-.Login__link{
-    text-align: center;
-    padding-top: 5px
-}

@@ -66,7 +66,7 @@ class addPost extends Component {
                 // value={email}
               />
             </div>
-            <div>
+            <div className="form-group">
               <label>Date</label>
               <input
                 // onChange={this.onInputChange}
@@ -76,7 +76,7 @@ class addPost extends Component {
                 // value={password}
               />
             </div>
-            <div>
+            <div className="form-group">
               <label>Your text here:</label>
               <input
                 // onChange={this.onInputChange}
@@ -86,7 +86,7 @@ class addPost extends Component {
                 // value={password}
               />
             </div>
-            <div>
+            <div className="Form__button">
               <Button
                 // type="button"
                 // onClick={() => onLogin(email, password)}
