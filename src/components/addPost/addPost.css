@@ -1,0 +1,47 @@
+.Form {
+    height:100vh;
+    background-color: rgb(156, 148, 148);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.Form__content {
+    width:30%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    
+    display: flex;
+    flex-direction: column;
+}
+/* .Login__form{
+    display: flex;
+    flex-direction: column;
+}
+.Login__input{
+    margin-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.Login__text {
+    font-size: 30px;
+}
+*/
+.Login__button {
+    display: flex;
+ justify-content: center;
+}
+
+
+.Form__title {
+    font-weight: bold;
+    padding: 12px;
+    text-align: center;
+
+} 
+
+.Login__link{
+    text-align: center;
+    padding-top: 5px
+}

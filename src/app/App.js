@@ -5,7 +5,9 @@ class App extends PureComponent {
   render() {
     return (
       <Fragment>
-        <div />
+        <div>
+          <Forms/>
+        </div>
       </Fragment>
     );
   }
