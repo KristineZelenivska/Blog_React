@@ -40,3 +40,9 @@
     text-align: center;
 
 } 
+
+.Form__link {
+    display: flex;
+    justify-content: center;
+
+}

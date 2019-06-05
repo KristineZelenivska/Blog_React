@@ -18,6 +18,9 @@
     "mockapi": "node mockapi",
     "lint": "eslint ./src/index.js"
   },
+  "api": {
+    "local": "localhost:4000"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",

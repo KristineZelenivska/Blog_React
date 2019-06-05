@@ -1,51 +1,68 @@
-import React, { Component } from "react";
-import { Button, Input } from "reactstrap";
-import "./addPost.css";
+import React, { Component } from 'react';
+import { Button, Input, Spinner } from 'reactstrap';
+import { connect } from 'react-redux';
+import { addPost, onChange } from '../../redux/actions/postActions.js';
+import { Link } from 'react-router-dom';
 
-class addPost extends Component {
+import './addPost.css';
+// console.log(addPost())
+class Form extends Component {
   constructor() {
     super();
     this.state = {
-      author: "",
-      date: "",
-      text: ""
+      author: '',
+      date: '',
+      text: '',
+      show: false,
     };
   }
 
-  componentDidMount() {
-    console.log("1) did mount");
-  }
+  // componentDidMount() {
+  //   getPosts()
+  //   console.log("1) did mount");
+  // }
 
-  static getDerivedStateFromProps(props, state) {
-    //initial state of components
-    console.log("2) get derived");
+  // static getDerivedStateFromProps(props, state) {
+  //   //initial state of components
+  //   console.log("2) get derived");
 
-    return state;
-  }
+  //   return state;
+  // }
 
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("4) got snapshot");
-    return prevState;
-  }
+  // getSnapshotBeforeUpdate(prevProps, prevState) {
+  //   console.log("4) got snapshot");
+  //   return prevState;
+  // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("3) Should update?");
-    return nextState;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("3) Should update?");
+  //   return nextState;
+  // }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("5) Did update");
-  }
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   console.log("5) Did update");
+  // }
 
-  onInputChange = e => {
-    console.log(1111, e.target.value)
-    console.log(2222, e.target.name)
-    this.setState({ [e.target.name]: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
+  onAuthorChange = (e) => {
+    this.setState({ author: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
+  };
+  onDateChange = (e) => {
+    this.setState({ date: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
+  };
+  onTextChange = (e) => {
+    this.setState({ text: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
   };
 
   onAdd = () => {
-    console.log('button clicked')
-  }
+    const { author, date, text } = this.state;
+    // console.log(11111, author)
+    // console.log(22222, date)
+    // console.log(33333, text)
+    // console.log('button clicked')
+    // console.log(11111, this.state)
+    addPost();
+    // this.setState({...state, show: true})
+  };
 
   // shouldComponentUpdate(){      //
   // console.log('should update')
@@ -53,30 +70,30 @@ class addPost extends Component {
   // }
 
   render() {
-    // const { onAdd } = this.props;
-
-    // const { email, password } = this.state;
+    const { posts } = this.props;
 
     return (
       <div className="Form">
         <div className="Form__content">
-          <h1 className="Form__title">Tell us,<br/> what's on your mind!</h1>
+          <h1 className="Form__title">
+            Tell us,
+            <br /> what's on your mind!
+          </h1>
           <form>
             <div className="form-group">
               <label>Author</label>
               <input
-                onChange={this.onInputChange}
+                onChange={this.onAuthorChange}
                 // name="email"
                 className="form-control"
                 type="author"
                 // value={email}
               />
-             
             </div>
             <div className="form-group">
               <label>Date</label>
               <input
-               onChange={this.onInputChange}
+                onChange={this.onDateChange}
                 // name="password"
                 className="form-control"
                 type="date"
@@ -87,7 +104,7 @@ class addPost extends Component {
             <div className="form-group">
               <label>Your text here:</label>
               <Input
-                onChange={this.onInputChange}
+                onChange={this.onTextChange}
                 // name="password"
                 className="form-control"
                 type="textarea"
@@ -97,18 +114,35 @@ class addPost extends Component {
               />
             </div>
             <div className="Form__button">
-              <Button
-                type="button"
-                onClick={() => this.onAdd()}
-                color="primary"
-              >
-                Add
+              <Button type="button" onClick={() => this.onAdd()} color="info">
+                Add my thought!
               </Button>
             </div>
+
+            <div className="Form__link">
+              <Link to="/posts"> Check my posts</Link>
+            </div>
           </form>
+        </div>
+        <div>
+          <h1>{posts}</h1>
         </div>
       </div>
     );
   }
 }
-export default addPost;
+
+const mapStateToProps = (state) => {
+  //this is the STORE //данные из store
+  return {
+    posts: state.posts, //updated to our props
+  };
+};
+// const mapDispatchtoProps = { //it allows us get this method from props
+//   getPosts
+// }
+
+// export default connect( mapStateToProps, mapDispatchtoProps
+// )(addPost);
+
+export default connect(mapStateToProps)(Form);
