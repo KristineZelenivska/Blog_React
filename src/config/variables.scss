@@ -22,7 +22,6 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 
-
 //Blue
 $viking: #6cc6dd;
 $blue: #007bff;
@@ -67,7 +66,7 @@ $theme-colors: (
   'dark': $black,
   'success': $white,
   'danger': $white,
-  'warning': $white
+  'warning': $white,
 );
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
@@ -126,7 +125,7 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1600px
+  xxl: 1600px,
 );
 
 $container-max-widths: (
@@ -134,7 +133,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1400px
+  xxl: 1400px,
 );
 
 //

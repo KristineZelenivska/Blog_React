@@ -1,0 +1,56 @@
+$center: center;
+
+.Form 
+  height: 100vh
+  background-color: $gray-500
+  display: flex
+  align-items: $center
+  justify-content: $center
+
+.Form__content 
+  width: 50%
+  background-color: $gray-300
+  padding: 20px
+  border-radius: 10px
+  display: flex
+  flex-direction: column
+
+.Form__title 
+  font-weight: bold
+  padding: 12px
+  text-align: $center
+
+.form-control 
+  background-color: $gray-300
+
+.Form__button 
+  display: flex
+  justify-content: $center
+  padding-top: 12px
+
+.Form__link 
+  display: flex
+  justify-content: $center
+  margin: 10px
+
+.form__child__link 
+  padding: 5px
+  border: 2px solid grey
+  border-radius: 5px
+
+%toast
+  color: $gray-100
+  padding: 7px
+  text-align: center
+
+.toast_body
+  @extend %toast
+  background: $calypso
+
+.toast_empty_body
+ @extend %toast
+ padding: 30px
+ font-size: 25px
+
+.toast_body_edit
+  @extend %toast

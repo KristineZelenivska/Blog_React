@@ -1,116 +1,94 @@
 import React, { Component } from 'react';
-import { Button, Input, Spinner } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addPost, onChange } from '../../redux/actions/postActions.js';
+import { bindActionCreators } from 'redux';
+import { addPost, onAuthorChange, onDateChange, onTextChange } from '../../redux/actions/postActions.js';
 import { Link } from 'react-router-dom';
+import { toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './addPost.sass';
 
-import './addPost.css';
-// console.log(addPost())
+toast.configure({
+  pauseOnFocusLoss: false,
+  transition: Zoom,
+  position: toast.POSITION.BOTTOM_RIGHT,
+  hideProgressBar: true,
+  autoClose: 5000,
+});
+
+const actionToProps = (dispatch) => ({
+  actions: bindActionCreators({ addPost, onAuthorChange, onDateChange, onTextChange }, dispatch),
+});
+
+const mapStateToProps = (state) => ({
+  posts: state.forms,
+});
+
 class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-      author: '',
-      date: '',
-      text: '',
-      show: false,
-    };
-  }
+  // state = {
+  //   author: '',
+  //   date: '',
+  //   text: '',
+  // };
+  // test = (e) => console.log({ [e.target.name]: e.target.value });
+  authorChange = (e) => this.props.actions.onAuthorChange(e.target.value);
 
-  // componentDidMount() {
-  //   getPosts()
-  //   console.log("1) did mount");
-  // }
+  dateChange = (e) => this.props.actions.onDateChange(e.target.value);
 
-  // static getDerivedStateFromProps(props, state) {
-  //   //initial state of components
-  //   console.log("2) get derived");
-
-  //   return state;
-  // }
-
-  // getSnapshotBeforeUpdate(prevProps, prevState) {
-  //   console.log("4) got snapshot");
-  //   return prevState;
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log("3) Should update?");
-  //   return nextState;
-  // }
-
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   console.log("5) Did update");
-  // }
-
-  onAuthorChange = (e) => {
-    this.setState({ author: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
-  };
-  onDateChange = (e) => {
-    this.setState({ date: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
-  };
-  onTextChange = (e) => {
-    this.setState({ text: e.target.value }); //e is event which is onInputChange and target is the stuff we give it inside(the info)
-  };
+  textChange = (e) => this.props.actions.onTextChange(e.target.value);
 
   onAdd = () => {
-    const { author, date, text } = this.state;
-    // console.log(11111, author)
-    // console.log(22222, date)
-    // console.log(33333, text)
-    // console.log('button clicked')
-    // console.log(11111, this.state)
-    addPost();
-    // this.setState({...state, show: true})
-  };
+    const { posts, actions } = this.props;
 
-  // shouldComponentUpdate(){      //
-  // console.log('should update')
-  // return true;
-  // }
+    if (posts.author && posts.date && posts.text) {
+      const data = {
+        id: Date.now(),
+        ...posts,
+      };
+      actions.addPost(data);
+      toast('Congrats! Your thought was added!', { className: 'toast_body' });
+      toast(`Click "Check my posts" button to see it.`, { autoClose: 8000, className: 'toast_body' });
+    } else {
+      toast.error('Please, fill all fields', {
+        className: 'toast_empty_body',
+        position: 'bottom-center',
+      });
+    }
+  };
 
   render() {
     const { posts } = this.props;
-
     return (
       <div className="Form">
         <div className="Form__content">
           <h1 className="Form__title">
             Tell us,
-            <br /> what's on your mind!
+            <br />
+            what&apos;s on your mind!
           </h1>
           <form>
-            <div className="form-group">
+            <div>
               <label>Author</label>
               <input
-                onChange={this.onAuthorChange}
-                // name="email"
+                onChange={this.authorChange}
                 className="form-control"
                 type="author"
-                // value={email}
+                name="author"
+                value={posts.author}
               />
             </div>
-            <div className="form-group">
+            <div>
               <label>Date</label>
-              <input
-                onChange={this.onDateChange}
-                // name="password"
-                className="form-control"
-                type="date"
-                // value= "2015-08-09"
-                // value={password}
-              />
+              <input onChange={this.dateChange} className="form-control" type="date" name="date" value={posts.date} />
             </div>
-            <div className="form-group">
+            <div>
               <label>Your text here:</label>
-              <Input
-                onChange={this.onTextChange}
-                // name="password"
+              <input
+                onChange={this.textChange}
                 className="form-control"
                 type="textarea"
                 name="text"
-                // type="password"
-                // value={password}
+                value={posts.text}
               />
             </div>
             <div className="Form__button">
@@ -118,31 +96,24 @@ class Form extends Component {
                 Add my thought!
               </Button>
             </div>
-
             <div className="Form__link">
-              <Link to="/posts"> Check my posts</Link>
+              <Link to="/posts" className="form__child__link">
+                Check my posts
+              </Link>
+            </div>
+            <div className="Form__link">
+              <Link to="/" className="form__child__link">
+                Take me Home!
+              </Link>
             </div>
           </form>
-        </div>
-        <div>
-          <h1>{posts}</h1>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  //this is the STORE //данные из store
-  return {
-    posts: state.posts, //updated to our props
-  };
-};
-// const mapDispatchtoProps = { //it allows us get this method from props
-//   getPosts
-// }
-
-// export default connect( mapStateToProps, mapDispatchtoProps
-// )(addPost);
-
-export default connect(mapStateToProps)(Form);
+export default connect(
+  mapStateToProps,
+  actionToProps,
+)(Form);

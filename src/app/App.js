@@ -1,38 +1,28 @@
 import React, { PureComponent, Fragment } from 'react';
-import Forms from '../components/addPost/addPost';
-import Posts from '../components/showPosts/showPosts'
-import { createStore, combineReducers } from 'redux';
-
-import { Route, Switch, BrowserRouter } from "react-router-dom"
-//////////////////////////////////////////////////////////
-// const reducers = combineReducers({
-//   post: postReducer,
-// });
-
-// const store = createStore(postReducer);
-// store.subscribe(() => {
-//   console.log('store changed', store.getState());
-// });
-
-//////////////////////////////////////////////////////////
+import { Link } from 'react-router-dom';
+import './app.sass';
+import './app.css';
 
 class App extends PureComponent {
   render() {
     return (
-      // <Provider store={store}>
-        <Fragment>
+      <Fragment>
+        <div className="Homepage__body">
           <div>
-            <h1>Welcome to homepage</h1>
+            <h1 className="Homepage__title">Welcome to homepage</h1>
+            <div className="Homepage__link">
+              <Link to="/forms" className="Homepage__child__link">
+                Create new post
+              </Link>
             </div>
-          {/* <BrowserRouter>
-          <Switch>
-          <Route exact patch="/" component={Forms} />
-            <Route exact patch="/forms" component={Forms} />
-            <Route exact patch="/posts" component={Posts} />
-          </Switch>
-</BrowserRouter> */}
-        </Fragment>
-      // </Provider>
+            <div className="Homepage__link">
+              <Link to="/posts" className="Homepage__child__link">
+                Show existing posts
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Fragment>
     );
   }
 }
