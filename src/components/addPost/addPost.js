@@ -59,54 +59,57 @@ class Form extends Component {
   render() {
     const { posts } = this.props;
     return (
-      <div className="Form">
-        <div className="Form__content">
-          <h1 className="Form__title">
-            Tell us,
-            <br />
-            what&apos;s on your mind!
-          </h1>
-          <form>
-            <div>
-              <label>Author</label>
-              <input
-                onChange={this.authorChange}
-                className="form-control"
-                type="author"
-                name="author"
-                value={posts.author}
-              />
-            </div>
-            <div>
-              <label>Date</label>
-              <input onChange={this.dateChange} className="form-control" type="date" name="date" value={posts.date} />
-            </div>
-            <div>
-              <label>Your text here:</label>
-              <input
-                onChange={this.textChange}
-                className="form-control"
-                type="textarea"
-                name="text"
-                value={posts.text}
-              />
-            </div>
-            <div className="Form__button">
-              <Button type="button" onClick={() => this.onAdd()} color="info">
-                Add my thought!
-              </Button>
-            </div>
-            <div className="Form__link">
-              <Link to="/posts" className="form__child__link">
-                Check my posts
-              </Link>
-            </div>
-            <div className="Form__link">
-              <Link to="/" className="form__child__link">
-                Take me Home!
-              </Link>
-            </div>
-          </form>
+      <div>
+        <div className="Form">
+          <div className="Form__content">
+            <h1 className="Form__title">
+              Tell us,
+              <br />
+              what&apos;s on your mind!
+            </h1>
+            <form>
+              <div>
+                <label>Author</label>
+                <input
+                  onChange={this.authorChange}
+                  className="form-control"
+                  type="author"
+                  name="author"
+                  value={posts.author}
+                />
+              </div>
+              <div>
+                <label>Date</label>
+                <input onChange={this.dateChange} className="form-control" type="date" name="date" value={posts.date} />
+              </div>
+              <div>
+                <label>Your text here:</label>
+                <input
+                  onChange={this.textChange}
+                  className="form-control"
+                  type="textarea"
+                  name="text"
+                  value={posts.text}
+                />
+              </div>
+              <div className="Form__button">
+                <Button type="button" onClick={() => this.onAdd()} color="info">
+                  Add my thought!
+                </Button>
+              </div>
+              <div className="Form__link">
+                <Link to="/posts" className="form__child__link">
+                  Check my posts
+                </Link>
+                <Link to="/" className="form__child__link">
+                  Take me Home!
+                </Link>
+                <Link to="/other" className="form__child__link">
+                  Go to other form!
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );

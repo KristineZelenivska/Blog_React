@@ -55,6 +55,7 @@ class PostCard extends Component {
             Created on:
             {date}
           </CardSubtitle>
+
           {!this.state.edit ? (
             <CardText className="PostCard__text">"{text}"</CardText>
           ) : (

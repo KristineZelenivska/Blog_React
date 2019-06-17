@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { loadData } from '~/redux/actions/postActions';
+import { Link } from 'react-router-dom';
+
 import showResults from './showResults';
 import { get } from 'https';
+import './otherForm.sass';
 
 const profile = {
   name: 'Kristine',
@@ -109,6 +112,21 @@ class OtherForm extends Component {
               <Button type="submit" color="info" disabled={pristine || submitting} onClick={() => this.doSomething()}>
                 Clear form
               </Button>
+            </div>
+            <div className="Other__link">
+              <Link to="/posts" className="other__child__link">
+                Check my posts
+              </Link>
+              {/* </div>
+            <div className="Other__link"> */}
+              <Link to="/" className="other__child__link">
+                Take me Home!
+              </Link>
+              {/* </div>
+            <div className="Other__link"> */}
+              <Link to="/forms" className="other__child__link">
+                Create new post!
+              </Link>
             </div>
           </form>
         </div>
