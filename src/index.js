@@ -8,7 +8,7 @@ import App from './app/App';
 import registerServiceWorker from './registerServiceWorker';
 import Forms from './components/addPost/addPost';
 import Posts from './components/showPosts/showPosts';
-import OtherForm from './components/otherForm/otherForm';
+import OtherPage from './components/otherForm';
 import showResults from './components/otherForm/showResults';
 // import ShowValues from './components/otherForm/values';
 
@@ -23,7 +23,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route exact path="/forms" component={Forms} />
         <Route exact path="/posts" component={Posts} />
-        <Route exact path="/other" component={OtherForm} />
+        <Route exact path="/other" component={OtherPage} />
       </Switch>
     </BrowserRouter>
   </Provider>,
